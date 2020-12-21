@@ -6,11 +6,13 @@ int parse_magic(t_macho_file *mf)
 	mf->mh64.magic = *(uint32_t *)mf->file;
 	if (mf->mh.magic == MH_MAGIC || mf->mh.magic == MH_CIGAM)
 		parse_macho(mf);
-	else if (mf->mh.magic == MH_MAGIC_64 || mf->mh.magic == MH_CIGAM_64 || mf->mh.magic == 0xcafebabe)
+	else if (mf->mh.magic == MH_MAGIC_64 || mf->mh.magic == MH_CIGAM_64)
 		parse_macho64(mf);
+	else if (mf->mh.magic == FAT_MAGIC || mf->mh.magic == FAT_CIGAM)
+		parse_fat(mf);
 	else
 	{
-		ft_printf("%s: is not an object file\n", mf->arg);
+		ft_printf("%s: is not a Mach-O object file\n", mf->arg);
 		return (1);
 	}
 	return (0);
@@ -36,6 +38,7 @@ int otool(void *file, char **argv, int argn)
 
 	mf.file = file;
 	mf.arg = argv[argn];
+	mf.isfat = 0;
 	parse_magic(&mf);
 	return (0);
 }

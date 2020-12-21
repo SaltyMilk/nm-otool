@@ -14,7 +14,8 @@ int print_text(t_macho_file *mf, t_section *sect)
 	while (bw < sect->size)
 	{
 		if (!(bw % 16))
-			ft_printf("\n%0.8x\t", addr);
+			ft_printf(mf->isfat ? "\n%0.16x\t"
+			 : "\n%0.8x\t", addr);
 		ft_printf("%02x ", *(unsigned char *)text++);
 		bw++;
 		addr++;

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-MSRC = otool.c parse_header.c parse_macho.c utils.c parse_header64.c parse_macho64.c
+MSRC = otool.c parse_header.c parse_macho.c utils.c parse_header64.c parse_macho64.c fat.c
 CC = gcc
 CFLAGS = -c -Wall -Wextra -Werror
 MOBJ = $(MSRC:.c=.o)
@@ -19,7 +19,7 @@ all : ft_otool
 
 ft_otool : $(MOBJ)
 	make -C libft
-	$(CC) -fsanitize=address $(NAME) $? libft/libft.a -o ft_otool
+	$(CC) -fsanitize=address $(NAME) $(MOBJ) libft/libft.a -o ft_otool
 
 %.o: %.c
 	$(CC) $(CFLAGS) $?

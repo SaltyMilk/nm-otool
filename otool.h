@@ -6,6 +6,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <mach-o/loader.h>
+# include <mach-o/fat.h>
 
 typedef struct	s_macho_header
 {
@@ -100,12 +101,17 @@ typedef struct	s_load_command
 	uint32_t	cmdsize;	
 }				t_load_cmd;
 
+typedef struct	fat_header t_fat_header;
+typedef struct	fat_arch t_fat_arch;
+
 typedef struct	s_macho_file
 {
 	void				*file;
 	t_macho_header		mh;
 	t_macho_header64	mh64;
 	t_load_cmd			*lc;
+	t_fat_header		fh;
+	char				isfat;
 	char			*arg;
 }				t_macho_file;
 
@@ -115,5 +121,6 @@ int		parse_magic(t_macho_file *mf);
 void	ft_freedptr(char **ptr, uint32_t size);
 int		parse_macho_header64(t_macho_file *mf);
 int		parse_macho64(t_macho_file *mf);
+int		parse_fat(t_macho_file *mf);
 
 #endif

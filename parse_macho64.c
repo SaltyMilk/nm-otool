@@ -10,7 +10,10 @@ int print_text64(t_macho_file *mf, t_section64 *sect)
 	bw = 0;
 	text = mf->file + sect->offset;
 	addr = sect->addr;
-	ft_printf("%s:\n", mf->arg);
+	if (!mf->oname)
+		ft_printf("%s:\n", mf->arg);
+	else
+		ft_printf("%s(%s):\n", mf->arg, mf->oname);
 	ft_printf("Contents of (__TEXT,__text) section");
 	while (bw < sect->size)
 	{

@@ -10,6 +10,8 @@ int parse_magic(t_macho_file *mf)
 		parse_macho64(mf);
 	else if (mf->mh.magic == FAT_MAGIC || mf->mh.magic == FAT_CIGAM)
 		parse_fat(mf);
+	else if (!ft_strncmp((char *)mf->file, ARMAG, SARMAG))
+		parse_ar(mf);
 	else
 	{
 		ft_printf("%s: is not a Mach-O object file\n", mf->arg);
@@ -39,6 +41,7 @@ int otool(void *file, char **argv, int argn)
 	mf.file = file;
 	mf.arg = argv[argn];
 	mf.isfat = 0;
+	mf.oname = NULL;
 	parse_magic(&mf);
 	return (0);
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-MSRC = otool.c parse_header.c parse_macho.c utils.c parse_header64.c parse_macho64.c fat.c
+MSRC = otool.c parse_header.c parse_macho.c utils.c parse_header64.c parse_macho64.c fat.c ar.c
 CC = gcc
 CFLAGS = -c -Wall -Wextra -Werror
 MOBJ = $(MSRC:.c=.o)

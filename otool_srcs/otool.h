@@ -1,7 +1,7 @@
 #ifndef OTOOL_H
 #define OTOOL_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <sys/mman.h>
 # include <sys/stat.h>
 # include <fcntl.h>

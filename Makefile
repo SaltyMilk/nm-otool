@@ -10,24 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-MSRC = otool.c parse_header.c parse_macho.c utils.c parse_header64.c parse_macho64.c fat.c ar.c
+OSRC = otool_srcs/otool.c otool_srcs/parse_header.c otool_srcs/parse_macho.c\
+	otool_srcs/utils.c otool_srcs/parse_header64.c otool_srcs/parse_macho64.c\
+	otool_srcs/fat.c otool_srcs/ar.c
 CC = gcc
 CFLAGS = -c -Wall -Wextra -Werror
-MOBJ = $(MSRC:.c=.o)
+OOBJ = $(OSRC:.c=.o)
 
 all : ft_otool
 
-ft_otool : $(MOBJ)
+ft_otool : $(OOBJ)
 	make -C libft
-	$(CC) -fsanitize=address $(NAME) $(MOBJ) libft/libft.a -o ft_otool
+	$(CC) -fsanitize=address $(NAME) $(OOBJ) libft/libft.a -o ft_otool
 
 %.o: %.c
-	$(CC) $(CFLAGS) $?
+	$(CC) $(CFLAGS) $? -o $@
 
 clean : 
-	rm -f $(MOBJ) libft/*.o
+	rm -f $(OOBJ) libft/*.o
 fclean :
-	rm -f $(MOBJ) otool libft/libft.a libft/*o
+	rm -f $(OOBJ) ft_otool libft/libft.a libft/*o
 
 re : fclean all
 

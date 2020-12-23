@@ -138,5 +138,7 @@ int							parse_macho_header64(t_macho_file *mf);
 int							parse_macho64(t_macho_file *mf);
 int							parse_fat(t_macho_file *mf);
 int							parse_ar(t_macho_file *mf);
+int							print_text(t_macho_file *mf, t_section64 *sect);
+int							print_text64(t_macho_file *mf, t_section64 *sect);
 
 #endif

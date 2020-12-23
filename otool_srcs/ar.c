@@ -6,13 +6,13 @@
 /*   By: sel-melc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 09:04:40 by sel-melc          #+#    #+#             */
-/*   Updated: 2019/10/20 12:28:12 by sel-melc         ###   ########.fr       */
+/*   Updated: 2020/12/23 03:36:06 by sel-melc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "otool.h"
 
-uint64_t get_file_size(char *filename)
+uint64_t	get_file_size(char *filename)
 {
 	int			fd;
 	struct stat	buff;
@@ -23,10 +23,10 @@ uint64_t get_file_size(char *filename)
 	return (buff.st_size);
 }
 
-int parse_ar(t_macho_file *mf)
+int			parse_ar(t_macho_file *mf)
 {
 	int		size;
-	int 	i;
+	int		i;
 	void	*ar;
 	void	*s_ptr;
 
@@ -48,5 +48,5 @@ int parse_ar(t_macho_file *mf)
 		ar += size + sizeof(t_ar_hdr);
 		mf->file = s_ptr;
 	}
-	return(0);
+	return (0);
 }

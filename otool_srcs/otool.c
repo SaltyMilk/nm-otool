@@ -6,13 +6,13 @@
 /*   By: sel-melc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 09:04:40 by sel-melc          #+#    #+#             */
-/*   Updated: 2019/10/20 12:28:12 by sel-melc         ###   ########.fr       */
+/*   Updated: 2020/12/23 03:38:10 by sel-melc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "otool.h"
 
-int parse_magic(t_macho_file *mf)
+int		parse_magic(t_macho_file *mf)
 {
 	mf->mh.magic = *(uint32_t *)mf->file;
 	mf->mh64.magic = *(uint32_t *)mf->file;
@@ -32,7 +32,7 @@ int parse_magic(t_macho_file *mf)
 	return (0);
 }
 
-void *open_file(char ** argv, int file_n)
+void	*open_file(char **argv, int file_n)
 {
 	struct stat	buff;
 	int			fd;
@@ -46,7 +46,7 @@ void *open_file(char ** argv, int file_n)
 	return (f == MAP_FAILED ? NULL : f);
 }
 
-int otool(void *file, char **argv, int argn)
+int		otool(void *file, char **argv, int argn)
 {
 	t_macho_file	mf;
 
@@ -58,7 +58,7 @@ int otool(void *file, char **argv, int argn)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	void	*file;
 	int		argn;

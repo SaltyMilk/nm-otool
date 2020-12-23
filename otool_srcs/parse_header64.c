@@ -6,13 +6,13 @@
 /*   By: sel-melc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 09:04:40 by sel-melc          #+#    #+#             */
-/*   Updated: 2019/10/20 12:28:12 by sel-melc         ###   ########.fr       */
+/*   Updated: 2020/12/23 03:44:26 by sel-melc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "otool.h"
 
-int parse_macho_header64(t_macho_file *mf)
+int	parse_macho_header64(t_macho_file *mf)
 {
 	size_t pos;
 

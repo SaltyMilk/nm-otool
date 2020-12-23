@@ -6,18 +6,18 @@
 /*   By: sel-melc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 09:04:40 by sel-melc          #+#    #+#             */
-/*   Updated: 2019/10/20 12:28:12 by sel-melc         ###   ########.fr       */
+/*   Updated: 2020/12/23 03:54:34 by sel-melc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "otool.h"
 
-void ft_freedptr(char **ptr, uint32_t size)
+void	ft_freedptr(char **ptr, uint32_t size)
 {
 	uint32_t i;
 
 	i = 0;
 	while (i < size)
 		free(ptr[i]);
-	free(ptr);	
+	free(ptr);
 }

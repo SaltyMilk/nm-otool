@@ -12,33 +12,6 @@
 
 #include "otool.h"
 
-int print_text(t_macho_file *mf, t_section *sect)
-{
-	void		*text;
-	uint32_t 	addr;
-	size_t		bw;
-
-	bw = 0;
-	text = mf->file + sect->offset;
-	addr = sect->addr;
-	if (!mf->oname)
-		ft_printf("%s:\n", mf->arg);
-	else
-		ft_printf("%s(%s):\n", mf->arg, mf->oname);
-	ft_printf("Contents of (__TEXT,__text) section");
-	while (bw < sect->size)
-	{
-		if (!(bw % 16))
-			ft_printf(mf->isfat ? "\n%0.16x\t"
-			 : "\n%0.8x\t", addr);
-		ft_printf("%02x ", *(unsigned char *)text++);
-		bw++;
-		addr++;
-	}
-	ft_printf("\n");
-	return (0);	
-}
-
 int handle_macho_sect(t_macho_file *mf, t_section *sect)
 {
 	if (!ft_strncmp(SECT_TEXT, sect->sectname, ft_strlen(SECT_TEXT)))

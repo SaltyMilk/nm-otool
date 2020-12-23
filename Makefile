@@ -12,7 +12,7 @@
 
 OSRC = otool_srcs/otool.c otool_srcs/parse_header.c otool_srcs/parse_macho.c\
 	otool_srcs/utils.c otool_srcs/parse_header64.c otool_srcs/parse_macho64.c\
-	otool_srcs/fat.c otool_srcs/ar.c
+	otool_srcs/fat.c otool_srcs/ar.c otool_srcs/print.c
 CC = gcc
 CFLAGS = -c -Wall -Wextra -Werror
 OOBJ = $(OSRC:.c=.o)
